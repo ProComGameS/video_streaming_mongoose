@@ -1,11 +1,12 @@
-import 'dotenv/config';
+import dotenv from 'dotenv';
+dotenv.config();
 import mongoose from 'mongoose';
 
-const dbUser = process.env.DB_USER;
-const dbPassword = process.env.DB_PASSWORD;
-const uri = `mongodb+srv://${dbUser}:${dbPassword}@test.xm463mn.mongodb.net/Test?retryWrites=true&w=majority`;
+//const dbUser = process.env.DB_USER;
+//const dbPassword = process.env.DB_PASSWORD;
+// const uri = `mongodb+srv://${dbUser}:${dbPassword}@test.xm463mn.mongodb.net/Test?retryWrites=true&w=majority`;
+const uri = process.env.MONGODB_URI;
 
-let db;
 
 
 export async function connectDB() {
@@ -14,7 +15,7 @@ export async function connectDB() {
         useUnifiedTopology: true,
     });
 
-    db = mongoose.connection;
+    mongoose.connection;
     console.log("✅ DB connected via Mongoose");
 }
 

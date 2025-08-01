@@ -36,7 +36,6 @@ async function main() {
 
         passport.use(new LocalStrategy({ usernameField: 'email', passwordField: 'password' },
             async (email, password, done) => {
-                try {
                     const user = await User.findOne({ email });
                     if (!user) return done(null, false, { message: 'Користувача не знайдено' });
 
@@ -44,10 +43,7 @@ async function main() {
                     if (!isMatch) return done(null, false, { message: 'Неправильний пароль' });
 
                     return done(null, user);
-                } catch (err) {
-                    return done(err);
 
-                }
             }
         ));
 
@@ -56,14 +52,10 @@ async function main() {
         });
 
         passport.deserializeUser(async (id, done) => {
-            try {
+
                 const user = await User.findOne({ _id: new mongoose.Types.ObjectId(id) });
                 done(null, user);
-            } catch (err) {
-                done(err);
-            }
         });
-
 
         app.use('/', routes);
 

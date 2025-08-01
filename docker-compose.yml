@@ -13,9 +13,8 @@ services:
 
     volumes:
       - ./backend:/app
-      - /app/node_modules
     environment:
-      - MONGODB_URI=mongodb://admin:changeme@mongo:27017/videoApp
+      - MONGODB_URI=mongodb://admin:changeme@mongo:27017/videoApp?authSource=admin
     depends_on:
       - mongo
     networks:
@@ -32,6 +31,7 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=changeme
+      - MONGO_INITDB_DATABASE=videoApp
     networks:
       - backend-network
 

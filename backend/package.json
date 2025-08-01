@@ -21,6 +21,7 @@
     "mongodb": "^6.17.0",
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
-    "pug": "^3.0.3"
+    "pug": "^3.0.3",
+    "mongoose": "^8.17.0"
   }
 }
